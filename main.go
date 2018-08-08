@@ -39,7 +39,7 @@ func main() {
 
 func handler() func(c *routing.Context) error {
 	cut := len([]byte("/api/"))
-	client := &http.Client{Timeout: time.Second}
+	client := &http.Client{Timeout: time.Second * 5}
 	return func(c *routing.Context) error {
 		uri := c.Request.RequestURI()
 		url := "https://reddit.com/" + string(uri[cut:])
