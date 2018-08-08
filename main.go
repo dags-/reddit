@@ -56,6 +56,7 @@ func handler() func(c *routing.Context) error {
 		}
 		defer rs.Body.Close()
 
+		c.Response.Header.Set("Access-Control-Allow-Origin", "*")
 		_, e = io.Copy(c.Response.BodyWriter(), rs.Body)
 
 		return e
